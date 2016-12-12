@@ -66,11 +66,13 @@
             })
                     .done(function (json) {
                         var bookDetails = json[0];
-                        display.append("<div style='border:1px solid black'>autor :" + bookDetails.author + " Opis: " + bookDetails.description + "" +
+                        display.append("<div style='border:1px solid black'>autor :"
+                                + bookDetails.author + " Opis: " + bookDetails.description + "" +
                                 '<form style="border:1px solid black" class="edit-form" >Edytuj książkę:<br>' +
                                 '<input type="text" name="name" value="' + bookDetails.name + '"><br>' +
                                 '<input type="text" name="author" value="' + bookDetails.author + '"><br>' +
-                                '<textarea  name="description" cols="50" rows="5" maxlength="255">' + bookDetails.description + '</textarea>' +
+                                '<textarea  name="description" cols="50" rows="5" maxlength="255">'
+                                + bookDetails.description + '</textarea>' +
                                 '<br><input type="submit" class="edit" style="border:1px solid black" name="' +
                                 bookDetails.id + '"></form><button class="delete" style="border:1px solid black" value="' +
                                 bookDetails.id + '">Usuń</button><br></div>');
