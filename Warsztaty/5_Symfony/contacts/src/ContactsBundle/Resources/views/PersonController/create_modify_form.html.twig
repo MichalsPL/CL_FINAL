@@ -1,0 +1,59 @@
+{% extends "ContactsBundle:PersonController:base.html.twig" %}
+
+{% block title %}ContactsBundle:PersonController:CreateModifyForm{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the PersonController:CreateModifyForm page</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    <a href="{{ path('delete', {'id': person.id}) }}">usuń</a><br>
+
+    {% if addresses|length > 0 %}
+        Poniżej wyświetlam wszystkie adresy 
+        <hr>
+        {% for address in addresses%}
+            Miasto: {{address.city}}<br>
+            Ulica: {{address.street}}<br>
+            Numer Domu: {{address.houseNo}}<br>
+            Numer Mieszkania  {{address.aptNo}}<br>
+            <a href="{{ path('delete_address', {'id': address.id}) }}">usuń</a>
+            <a href="{{ path('modify_address_form', {'id': address.id}) }}">modyfikuj</a>
+            <hr>
+        {%endfor%}
+    {% else %}
+        brak dodanych adresów
+    {%endif%}
+    <a href="{{ path('add_address_form', {'id': person.id}) }}">dodaj adres</a><hr>
+
+    {% if telephones|length > 0 %}
+        poniżej wyświetlam wszystkie telefony
+        <hr>
+        {% for telephone in telephones%}
+            Typ: {{telephone.type}}<br>
+            Numer: {{telephone.number}}<br>
+            <a href="{{ path('delete_telephone', {'id': telephone.id}) }}">usuń</a>
+            <a href="{{ path('modify_telephone_form', {'id': telephone.id}) }}">modyfikuj</a>
+            <hr>
+        {%endfor%}
+    {% else %}
+        brak dodanych telefonów
+    {%endif%}
+    <a href="{{ path('add_telephone_form', {'id': person.id}) }}">dodaj telefon</a><hr>
+
+    {% if emails|length > 0 %}
+        poniżej wyświetlam wszystkie maile
+        <hr>
+        {% for email in emails%}
+            Typ: {{email.type}}<br>
+            Numer: {{email.email}}<br>
+            <a href="{{ path('delete_email', {'id': email.id}) }}">usuń</a>
+            <a href="{{ path('modify_email_form', {'id': email.id}) }}">modyfikuj</a>
+            <hr>
+        {%endfor%}
+    {% else %}
+        brak dodanych emaili
+    {%endif%}
+    <a href="{{ path('add_email_form', {'id': person.id}) }}">dodaj email</a><hr>
+
+{% endblock %}

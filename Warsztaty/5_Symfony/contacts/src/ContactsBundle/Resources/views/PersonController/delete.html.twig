@@ -1,0 +1,35 @@
+{% extends "ContactsBundle:PersonController:base.html.twig" %}
+
+{% block title %}ContactsBundle:PersonController:Delete{% endblock %}
+
+{% block body %}
+    <h1>{{message}}</h1>
+
+    {% if person is defined%}
+        imię {{person.name}}<br>
+        nazwisko {{person.surname}}<br>
+        {% if person.description is defined%}
+            opis {{person.description}}
+        {% endif %}
+
+    {% elseif address is defined%}
+        miasto  {{address.city}}<br>
+        ulica {{address.street}}<br>
+        numer domu{{address.houseNo}}<br>
+        {%if address.houseNo is defined%}
+            numer mieszkania {{address.houseNo}} <br>
+        {%endif%}
+
+    {% elseif telephone is defined%}
+        typ {{telephone.type}}<br>
+        number {{telephone.number}} <br>
+
+    {% elseif email is defined%}
+        typ {{email.type}}<br>
+        email {{email.email}}<br>
+
+    {% else %}
+        Coś poszło nie tak 
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "ContactsBundle:PersonController:base.html.twig" %}
+
+{% block title %}ContactsBundle:PersonController:ShowOne{% endblock %}
+
+{% block body %}
+    <h1>Widzisz stronę osoby {{person.name}} {{person.surname}}</h1>
+    <h3> opis {{person.description}}</h3>
+    <a href="{{ path('modify', {'id': person.id}) }}">Edytuj</a><hr>
+    
+    {% if addresses|length > 0 %}
+        Poniżej wyświetlam wszystkie adresy 
+        <hr>
+        {% for address in addresses%}
+            Miasto: {{address.city}}<br>
+            Ulica: {{address.street}}<br>
+            Numer Domu: {{address.houseNo}}<br>
+            Numer Mieszkania  {{address.aptNo}}<br>
+            <hr>
+        {%endfor%}
+    {% else %}
+        brak dodanych adresów<br>
+    {%endif%}
+
+    {% if telephones|length > 0 %}
+        poniżej wyświetlam wszystkie telefony
+        <hr>
+        {% for telephone in telephones%}
+            Typ: {{telephone.type}}<br>
+            Numer: {{telephone.number}}<br>
+
+            <hr>
+        {%endfor%}
+    {% else %}
+        brak dodanych telefonów<br>
+    {%endif%}
+
+    {% if emails|length > 0 %}
+        poniżej wyświetlam wszystkie maile
+        <hr>
+        {% for email in emails%}
+            Typ: {{email.type}}<br>
+            Numer: {{email.email}}<br>
+            <hr>
+        {%endfor%}
+    {% else %}
+        brak dodanych emaili<br>
+    {%endif%}
+
+{% endblock %}

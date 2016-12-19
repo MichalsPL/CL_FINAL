@@ -1,0 +1,18 @@
+{% extends "ContactsBundle:PersonController:base.html.twig" %}
+
+{% block title %}ContactsBundle:PersonController:ShowAll{% endblock %}
+
+{% block body %}
+    <h1> Widzisz Wszystkie osoby</h1>
+    <ul>
+        {% for person in persons %}
+
+            <li>
+                <a href="{{ path('show_one', {'id': person.id}) }}">{{ person.name }}</a>
+                {{person.surname}} {{person.description}}
+            </li>
+
+        {% endfor %}
+    </ul><hr>
+    <a href="{{ path('new_form') }}">dodaj nową osobę</a>
+{% endblock %}

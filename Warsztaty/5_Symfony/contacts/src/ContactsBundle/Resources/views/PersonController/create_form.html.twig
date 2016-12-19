@@ -1,0 +1,35 @@
+{% extends "ContactsBundle:PersonController:base.html.twig" %}
+
+{% block title %}ContactsBundle:PersonController:CreateForm{% endblock %}
+
+{% block body %}
+
+    {% if person is defined%}
+        <h1>tworzysz nową osobę</h1>
+    {% elseif address is defined%}
+        <h1> Tworzysz nowy adres</h1>
+    {% elseif telephone is defined%}
+        <h1> Tworzysz nowy telefon</h1>
+    {% elseif email is defined%}
+        <h1> Tworzysz nowy email</h1>
+
+    {% endif %}
+
+    {% if owner is defined%}
+        dla : {{owner.name}} {{owner.surname}}
+    {%endif%}
+
+    {% if editAddress is defined%}
+        <h1> Edytujesz adres</h1>
+    {% elseif editTelephone is defined%}
+        <h1> edytujesz telefon</h1>
+    {% elseif editEmail is defined%}
+        <h1> edytujesz email</h1>
+
+    {% endif %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}
