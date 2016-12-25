@@ -1,7 +1,12 @@
 <a href="index.php">wróć na stronę główną</a>
 <form method="POST">      
     <h4> DODAJ Płatność</h4>
-    <label>Typ<input name="payment_type"></label>
+    <label>Typ<select name="payment_type">
+            <option value="cash">gotówka</option>
+            <option value="card">karta</option>
+            <option value="transfer">przelew</option>
+        </select>
+    </label>
     <label>Id Biletu<input name="ticket_ID"></label>
     <input type="submit" name="addPayment">
 </form>
