@@ -1,7 +1,7 @@
 <a href="index.php">wróć na stronę główną</a>
 <form method="POST">
     <h4> DODAJ BILET</h4>
-    <label>Cena<input type="number" name="price"></label>
+    <label>Cena<input type="number" step="0.01" name="price"></label>
     <label>Ilość<input type="number" name="quantity"></label>
     <input type="submit" name="addTicket"> 
 </form>
