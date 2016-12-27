@@ -6,7 +6,7 @@
     <h1>Widzisz stronę osoby {{person.name}} {{person.surname}}</h1>
     <h3> opis {{person.description}}</h3>
     <a href="{{ path('modify', {'id': person.id}) }}">Edytuj</a><hr>
-    
+
     {% if addresses|length > 0 %}
         Poniżej wyświetlam wszystkie adresy 
         <hr>
