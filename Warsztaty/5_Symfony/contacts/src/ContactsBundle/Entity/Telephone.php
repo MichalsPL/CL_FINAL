@@ -15,10 +15,10 @@
 
         /**
          * 
-         * @ORM\ManyToOne(targetEntity="Person", inversedBy="Telephone")
-         * @ORM\JoinColumn(name="personId", referencedColumnName="id", onDelete="CASCADE")
+         * @ORM\ManyToOne(targetEntity="Person", inversedBy="telephone")
+         * @ORM\JoinColumn(name="person", referencedColumnName="id", onDelete="CASCADE")
          */
-        private $personId;
+        private $person;
 
         /**
          * @var int
@@ -120,5 +120,27 @@
             return $this->personId;
         }
 
-    }
     
+    /**
+     * Set person
+     *
+     * @param \ContactsBundle\Entity\Person $person
+     * @return Telephone
+     */
+    public function setPerson(\ContactsBundle\Entity\Person $person = null)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return \ContactsBundle\Entity\Person 
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+}

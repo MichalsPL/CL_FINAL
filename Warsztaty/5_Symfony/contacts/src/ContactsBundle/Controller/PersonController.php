@@ -66,7 +66,7 @@
             $repository = $this->getDoctrine()->getRepository('ContactsBundle:Address');
             $em = $this->getDoctrine()->getManager();
             $query = $em->createQuery(
-                    'SELECT a FROM ContactsBundle:Address a WHERE a.personId = ' . $id
+                    'SELECT a FROM ContactsBundle:Address a WHERE a.person = ' . $id
                     );
             $addresses = $query->getResult();
             return $addresses;
@@ -76,7 +76,7 @@
             $repository = $this->getDoctrine()->getRepository('ContactsBundle:Telephone');
             $em = $this->getDoctrine()->getManager();
             $query = $em->createQuery(
-                    'SELECT t FROM ContactsBundle:Telephone t WHERE t.personId = ' . $id
+                    'SELECT t FROM ContactsBundle:Telephone t WHERE t.person = ' . $id
                     );
             $telephones = $query->getResult();
             return $telephones;
@@ -86,7 +86,7 @@
             $repository = $this->getDoctrine()->getRepository('ContactsBundle:Email');
             $em = $this->getDoctrine()->getManager();
             $query = $em->createQuery(
-                    'SELECT e FROM ContactsBundle:Email e WHERE e.personId = ' . $id
+                    'SELECT e FROM ContactsBundle:Email e WHERE e.person = ' . $id
                     );
             $emails = $query->getResult();
             return $emails;
@@ -247,7 +247,7 @@
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $address = $form->getData();
-                $address->setPersonId($person);
+                $address->setPerson($person);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($address);
                 $em->flush();
@@ -374,7 +374,7 @@
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $telephone = $form->getData();
-                $telephone->setPersonId($person);
+                $telephone->setPerson($person);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($telephone);
                 $em->flush();
@@ -502,7 +502,7 @@
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $email = $form->getData();
-                $email->setPersonId($person);
+                $email->setPerson($person);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($email);
                 $em->flush();

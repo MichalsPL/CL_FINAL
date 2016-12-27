@@ -15,11 +15,11 @@
 
         /**
          * 
-         * @ORM\ManyToOne(targetEntity="Person", inversedBy="Address")
+         * @ORM\ManyToOne(targetEntity="Person", inversedBy="address")
          * @ORM\JoinColumn(name="personId", referencedColumnName="id", onDelete="CASCADE")
          * 
          */
-        private $personId;
+        private $person;
 
         /**
          * @var int
@@ -175,5 +175,27 @@
             return $this->personId;
         }
 
-    }
     
+    /**
+     * Set person
+     *
+     * @param \ContactsBundle\Entity\Person $person
+     * @return Address
+     */
+    public function setPerson(\ContactsBundle\Entity\Person $person = null)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return \ContactsBundle\Entity\Person 
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+}

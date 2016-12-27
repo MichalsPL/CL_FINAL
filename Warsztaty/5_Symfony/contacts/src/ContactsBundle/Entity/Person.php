@@ -15,21 +15,21 @@
 
         /**
          * 
-         * @ORM\OneToMany(targetEntity="Address", mappedBy="Person")
+         * @ORM\OneToMany(targetEntity="Address", mappedBy="person")
          */
-        private $Address;
+        private $address;
 
         /**
          * 
-         * @ORM\OneToMany(targetEntity="Email", mappedBy="Person")
+         * @ORM\OneToMany(targetEntity="Email", mappedBy="person")
          */
-        private $Email;
+        private $email;
 
         /**
          * 
-         * @ORM\OneToMany(targetEntity="Telephone", mappedBy="Person")
+         * @ORM\OneToMany(targetEntity="Telephone", mappedBy="person")
          */
-        private $Telephone;
+        private $telephone;
 
         /**
          * @var int
@@ -235,4 +235,3 @@
         }
 
     }
-    
