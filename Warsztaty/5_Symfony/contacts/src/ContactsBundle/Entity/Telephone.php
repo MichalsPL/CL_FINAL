@@ -120,27 +120,26 @@
             return $this->personId;
         }
 
+        /**
+         * Set person
+         *
+         * @param \ContactsBundle\Entity\Person $person
+         * @return Telephone
+         */
+        public function setPerson(\ContactsBundle\Entity\Person $person = null) {
+            $this->person = $person;
+
+            return $this;
+        }
+
+        /**
+         * Get person
+         *
+         * @return \ContactsBundle\Entity\Person 
+         */
+        public function getPerson() {
+            return $this->person;
+        }
+
+    }
     
-    /**
-     * Set person
-     *
-     * @param \ContactsBundle\Entity\Person $person
-     * @return Telephone
-     */
-    public function setPerson(\ContactsBundle\Entity\Person $person = null)
-    {
-        $this->person = $person;
-
-        return $this;
-    }
-
-    /**
-     * Get person
-     *
-     * @return \ContactsBundle\Entity\Person 
-     */
-    public function getPerson()
-    {
-        return $this->person;
-    }
-}

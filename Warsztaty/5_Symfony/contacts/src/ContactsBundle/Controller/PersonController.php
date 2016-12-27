@@ -19,7 +19,7 @@
             $form = $this->createFormBuilder($person)
                     ->add('name')
                     ->add('surname')
-                    ->add('description', null, array( 'required' => false ))
+                    ->add('description', null, array('required' => false))
                     ->add('save', 'submit', array('label' => 'zatwierdź'))
                     ->getForm();
             return $form;
@@ -67,7 +67,7 @@
             $em = $this->getDoctrine()->getManager();
             $query = $em->createQuery(
                     'SELECT a FROM ContactsBundle:Address a WHERE a.person = ' . $id
-                    );
+            );
             $addresses = $query->getResult();
             return $addresses;
         }
@@ -77,7 +77,7 @@
             $em = $this->getDoctrine()->getManager();
             $query = $em->createQuery(
                     'SELECT t FROM ContactsBundle:Telephone t WHERE t.person = ' . $id
-                    );
+            );
             $telephones = $query->getResult();
             return $telephones;
         }
@@ -87,7 +87,7 @@
             $em = $this->getDoctrine()->getManager();
             $query = $em->createQuery(
                     'SELECT e FROM ContactsBundle:Email e WHERE e.person = ' . $id
-                    );
+            );
             $emails = $query->getResult();
             return $emails;
         }
@@ -103,7 +103,7 @@
             $name = $person->getName();
             $surname = $person->getSurname();
             $description = $person->getDescription();
-            
+
             $form = $this->CreateFormular($person);
             $addresses = $this->Addresses($id);
             $telephones = $this->Telephones($id);
@@ -193,7 +193,7 @@
          * @Method({"GET"})
          */
         public function ShowAllAction() {
-            
+
             $repository = $this->getDoctrine()->getRepository('ContactsBundle:Person');
             $allPersons = $repository->findBy([], ['surname' => 'ASC']);
 
