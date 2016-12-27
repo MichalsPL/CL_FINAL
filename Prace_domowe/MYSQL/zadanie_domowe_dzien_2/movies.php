@@ -19,9 +19,6 @@
             print "Wystąpił błąd" . $conn->error;
         }
     }
-
-    $conn->close();
-    $conn = null;
 ?>
 
 
@@ -32,7 +29,12 @@
         <title>...</title>
     </head>
     <body>
-        <?php showAll($conn) ?>
+<?php
+    showAll($conn);
+
+    $conn->close();
+    $conn = null;
+?>
 
 
     </body>	

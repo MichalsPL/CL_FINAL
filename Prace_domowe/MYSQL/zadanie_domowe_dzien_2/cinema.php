@@ -18,8 +18,8 @@
                             . "LEFT JOIN Movies ON Movies.id = seans.movie_id "
                             . "WHERE seans.cinema_id = " . $safeCinemaId . " "
                             . "AND Movies.id =" . $row['id'];
+                    
                     $result2 = $conn->query($sql2);
-
                     if ($result2) {
                         print "poniżej widzisz id seansow filmu<br><br>";
                         while ($row2 = $result2->fetch_assoc()) {
