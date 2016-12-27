@@ -1,7 +1,7 @@
 <?php
 
     function printCinemas($result) {
-        
+
         echo"<hr><ul>";
         while ($row = $result->fetch_assoc()) {
             print "<li>";
@@ -14,8 +14,8 @@
         }
         echo"</ul><hr>";
     }
-    
-        function printPayment($result) {
+
+    function printPayment($result) {
 
         echo"<ul>";
         while ($row = $result->fetch_assoc()) {
@@ -29,9 +29,9 @@
         }
         echo"</ul><hr>";
     }
-    
-        function printMovies($result) {
-        
+
+    function printMovies($result) {
+
         echo"<ul>";
         while ($row = $result->fetch_assoc()) {
             print "<li>";
@@ -45,24 +45,42 @@
         }
         echo"</ul><hr>";
     }
-    
-        function printTickets($result){
-    echo"<ul>";
-    while ($row = $result->fetch_assoc()) {
-        print "<li>";
-        echo "ID Biletu " . $row['id'] . "<BR>";
-        echo "Cena Biletu " . $row['price'] . "<BR>";
-        echo "Ilość Biletów " . $row["quantity"] . "<BR>";
-        echo "id Seansu ". $row['seans'] . "<BR>";
-        if ($row['id']===$row['payment']){
-            print 'OPŁACONY';
-        }else{
-            print 'NIE OPŁACONY';
+
+    function printTickets($result) {
+        echo"<ul>";
+        while ($row = $result->fetch_assoc()) {
+            print "<li>";
+            echo "ID Biletu " . $row['id'] . "<BR>";
+            echo "Cena Biletu " . $row['price'] . "<BR>";
+            echo "Ilość Biletów " . $row["quantity"] . "<BR>";
+            echo "id Seansu " . $row['seans'] . "<BR>";
+            if ($row['id'] === $row['payment']) {
+                print 'OPŁACONY';
+            } else {
+                print 'NIE OPŁACONY';
+            }
+            echo '<br><a href="admin_ticket.php?delete=Bilet&id=' . $row['id'] .
+            '">USUŃ BILET ID' . $row['id'] . '</a>' . "<BR>";
+
+            echo"</li><hr>";
         }
-        echo '<br><a href="admin_ticket.php?delete=Bilet&id=' . $row['id'] . 
-                '">USUŃ BILET ID' . $row['id'] . '</a>' . "<BR>";
-        
-        echo"</li><hr>";
+        echo"</ul><hr>";
     }
-    echo"</ul><hr>";
+
+    function showAllmowies($conn) {
+        $sql = "select * FROM Movies ";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            print "Widzisz wszystkie kina<br>";
+            while ($row = $result->fetch_assoc()) {
+                print "Tytuł filmu:  " . $row['name'] . "<br>";
+                print '<a href="movie.php?id=' . $row['id'] . '">zobacz szczegóły filmu</a>';
+                print '<hr>';
+            }
+        } elseif ($result->num_rows == 0) {
+            print "brak kin w bazie<br>";
+        } else {
+            print "Wystąpił błąd" . $conn->error;
+        }
     }
+    

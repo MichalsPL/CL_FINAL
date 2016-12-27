@@ -7,6 +7,7 @@
         if ($safeMovieId > 0) {
             $sql = "SELECT  * FROM Movies  WHERE id = " . $safeMovieId;
             $result = $conn->query($sql);
+            // basic movie info
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     print "Widzisz szczególy wybranego filmu - "
@@ -16,7 +17,7 @@
                     $sql2 = "SELECT Cinemas.name, Cinemas.id FROM seans "
                             . "LEFT JOIN Cinemas ON Cinemas.id = seans.cinema_id "
                             . "WHERE seans.movie_id = " . $safeMovieId;
-                    $result2 = $conn->query($sql2);
+                    $result2 = $conn->query($sql2); // details movie info
 
                     if ($result2->num_rows > 0) {
                         print "poniżej widzisz kina w których grany jest film <br><br>";
@@ -36,8 +37,6 @@
         }
     }
 ?>
-
-
 <!doctype html>
 <html>
     <head>

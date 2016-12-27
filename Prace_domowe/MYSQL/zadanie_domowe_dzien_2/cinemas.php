@@ -21,8 +21,6 @@
         }
     }
 ?>
-
-
 <!doctype html>
 <html>
     <head>
@@ -30,13 +28,11 @@
         <title>...</title>
     </head>
     <body>
-
         <?php
             showAll($conn);
             $conn->close();
             $conn = null;
         ?>
-
     </body>	
 </html>
 

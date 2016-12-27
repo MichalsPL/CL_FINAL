@@ -1,4 +1,3 @@
-<!doctype html>
 <?php
     include_once 'src/connect.php';
 
@@ -15,15 +14,14 @@
         } elseif ($conn->errno == 1062) {
             $message = "bilet zostal wcześniej oplacony";
         } else {
-            $message = $conn->errno;
+            $message = "wystąpił błąd numer" . $conn->errno;
         }
 
         $conn->close();
         $conn = null;
     }
 ?>
-
-
+<!doctype html>
 
 <html>
     <head>

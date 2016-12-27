@@ -8,7 +8,7 @@
             $sql = "SELECT DISTINCT Movies.name, Movies.id FROM seans "
                     . "LEFT JOIN Movies ON Movies.id = seans.movie_id "
                     . "WHERE seans.cinema_id = " . $safeCinemaId;
-            $result = $conn->query($sql);
+            $result = $conn->query($sql); // basic cinema info
 
             if ($result->num_rows > 0) {
                 print "Widzisz wszystkie Filmy w wybranym kinie<br>";
@@ -18,7 +18,7 @@
                             . "LEFT JOIN Movies ON Movies.id = seans.movie_id "
                             . "WHERE seans.cinema_id = " . $safeCinemaId . " "
                             . "AND Movies.id =" . $row['id'];
-                    
+
                     $result2 = $conn->query($sql2);
                     if ($result2) {
                         print "poniżej widzisz id seansow filmu<br><br>";
@@ -38,8 +38,6 @@
         }
     }
 ?>
-
-
 <!doctype html>
 <html>
     <head>
@@ -47,13 +45,11 @@
         <title>...</title>
     </head>
     <body>
-
         <?php
             showCinemaDetails($conn, $_GET['id']);
             $conn->close();
             $conn = null;
         ?>
-
     </body>	
 </html>
 

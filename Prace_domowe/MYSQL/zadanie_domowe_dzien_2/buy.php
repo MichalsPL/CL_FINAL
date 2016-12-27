@@ -45,10 +45,13 @@
         }
     }
 ?>
-
-
-
-
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>start</title>
+    </head>
+    <body>
         <form method="POST">
             <label>podaj ilość biletów
                 <input type="number" name="quantity"></label><br>
@@ -66,4 +69,5 @@
             <input type="submit">
         </form>
         <?php print $message; ?>
-
+    </body>	
+</html>

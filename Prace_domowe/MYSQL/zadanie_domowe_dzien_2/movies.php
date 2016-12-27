@@ -1,6 +1,6 @@
-<!doctype html>
 <?php
     include_once 'src/connect.php';
+    include_once 'src/print.php';
     $conn = connect();
 
     function showAll($conn) {
@@ -20,23 +20,19 @@
         }
     }
 ?>
-
-
-
+<!doctype html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>...</title>
     </head>
     <body>
-<?php
-    showAll($conn);
+        <?php
+            showAll($conn);
 
-    $conn->close();
-    $conn = null;
-?>
-
-
+            $conn->close();
+            $conn = null;
+        ?>
     </body>	
 </html>
 

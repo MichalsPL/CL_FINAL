@@ -7,7 +7,7 @@
         if ($result) {
             print "dodano kino o nazwie " . $recieved['name'] . " i adresie" . $recieved['adress'] . " ";
         } else {
-            print "Wystąpił błąd " . $conn->error;
+            print "Wystąpił błąd " . $conn->errno;
         }
     }
 
@@ -18,19 +18,7 @@
         if ($result) {
             print "dodano Film o tytule " . $recieved['name'] . " i opisie <br>" . $recieved['description'] . " ";
         } else {
-            print "Wystąpił błąd " . $conn->error;
-        }
-    }
-
-    function addTicket($conn, $recieved) {
-        $sql = 'INSERT INTO Tickets (price, quantity) VALUES'
-                . ' ("' . $recieved['price'] . '","' . $recieved['quantity'] . '")';
-        $result = $conn->query($sql);
-        if ($result) {
-            print "dodano Bilet o Cenie " . $recieved['price'] .
-                    " i w ilości " . $recieved['quantity'] . " sztuk";
-        } else {
-            print "Wystąpił błąd " . $conn->error;
+            print "Wystąpił błąd " . $conn->errno;
         }
     }
 
@@ -43,7 +31,19 @@
             print "dodano płatność o typie " . $recieved['payment_type'] .
                     " i ID biletu " . $recieved['ticket_ID'] . " sztuk";
         } else {
-            print "Wystąpił błąd " . $conn->error;
+            print "Wystąpił błąd " . $conn->errno;
+        }
+    }
+
+    function addSeans($cinema, $movie) {
+        $cinemaId = intval($_POST['cinema']);
+        $movieId = intval($_POST['movie']);
+        $sql = "INSERT INTO seans (movie_id, cinema_id) VALUES (" . $movieId . "," . $cinemaId . ")";
+        $result2 = $conn->query($sql);
+        if ($result2) {
+            print "seans został dodany";
+        } else {
+            print "seans nie został dodany " . $conn->errno;
         }
     }
     

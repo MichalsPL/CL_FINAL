@@ -1,10 +1,3 @@
-<a href="index.php">wróć na stronę główną</a>
-<form method="POST">
-    <h4> DODAJ BILET</h4>
-    <label>Cena<input type="number" name="price"></label>
-    <label>Ilość<input type="number" name="quantity"></label>
-    <input type="submit" name="addTicket"> 
-</form>
 <?php
     include_once 'src/print.php';
     include_once 'src/add.php';
@@ -12,12 +5,6 @@
     include_once 'src/connect.php';
     $conn = connect();
 
-    if (isset($_POST['addTicket'])) {
-        addTicket($conn, $_POST);
-    }
-    if (isset($_GET['delete']) && isset($_GET['id'])) {
-        delete($conn, $_GET['delete'], $_GET['id']);
-    }
     $sql = "SELECT Tickets.id AS id, Tickets.price AS price, "
             . "Tickets.quantity AS quantity, Tickets.seans_id AS seans, "
             . "Payments.id as payment FROM Tickets LEFT JOIN Payments ON Tickets.id=Payments.id";
@@ -27,10 +14,28 @@
     } else {
         $message = "Wystąpił błąd wróć na stronę główną";
     }
-    echo $message;
-
-    printTickets($result);
-    
-    $conn->close();
-    $conn=null;
 ?>
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>start</title>
+    </head>
+    <body>
+        <a href="index.php">wróć na stronę główną</a>
+        <?php
+        
+            if (isset($_GET['delete']) && isset($_GET['id'])) {
+                delete($conn, $_GET['delete'], $_GET['id'], $message);
+            }
+
+            echo $message;
+
+            printTickets($result);
+
+            $conn->close();
+            $conn = null;
+        ?>
+    </body>	
+</html>
