@@ -386,7 +386,7 @@
                 ));
             } else {
 
-                $message = "telefon musi składać się z nie więcej niż 10 cyfr";
+                $message = "Błąd telefon nie został dodany";
             }
 
             return $this->render('ContactsBundle:PersonController:create_new.html.twig', array(
@@ -426,7 +426,7 @@
                 $em->flush();
                 $message = "zmodyfikowałeś telefon";
             } else {
-                $message = "telefon musi składać się z nie więcej niż 10 cyfr";
+                $message = "telefon nie został zmodyfikowany";
             }
 
             return $this->render('ContactsBundle:PersonController:modify.html.twig', array(
