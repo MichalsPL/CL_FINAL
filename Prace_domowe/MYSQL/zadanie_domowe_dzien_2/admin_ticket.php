@@ -9,6 +9,7 @@
             . "Tickets.quantity AS quantity, Tickets.seans_id AS seans, "
             . "Payments.id as payment FROM Tickets LEFT JOIN Payments ON Tickets.id=Payments.id";
     $result = $conn->query($sql);
+
     if ($result) {
         $message = "Widzisz wszystkie Bilety";
     } else {
@@ -23,17 +24,17 @@
         <title>start</title>
     </head>
     <body>
-        <a href="index.php">wróć na stronę główną</a>
+        <a href="index.php">wróć na stronę główną</a><br>
         <?php
-        
             if (isset($_GET['delete']) && isset($_GET['id'])) {
                 delete($conn, $_GET['delete'], $_GET['id'], $message);
             }
 
             echo $message;
-
-            printTickets($result);
-
+            
+            if ($result) {
+                printTickets($result);
+            }
             $conn->close();
             $conn = null;
         ?>

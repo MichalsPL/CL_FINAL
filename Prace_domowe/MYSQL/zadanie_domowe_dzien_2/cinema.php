@@ -33,7 +33,7 @@
             } elseif ($result->num_rows === 0) {
                 print "Kino nie wyświetla teraz filmów<br>";
             } else {
-                print "Wystąpił błąd" . $conn->error;
+                print "Wystąpił błąd" . $conn->errno;
             }
         }
     }
@@ -45,6 +45,7 @@
         <title>...</title>
     </head>
     <body>
+        <a href="index.php">wróć na stronę główną</a><br>
         <?php
             showCinemaDetails($conn, $_GET['id']);
             $conn->close();

@@ -3,7 +3,7 @@
     include_once 'src/add.php';
     $conn = connect();
 
-    function printCinemaOptions() {
+    function printCinemaOptions($conn) {
         $sql = "SELECT Cinemas.id AS id, Cinemas.name AS name FROM Cinemas";
         $result = $conn->query($sql);
         while ($row = $result->fetch_assoc()) {
@@ -11,7 +11,7 @@
         }
     }
 
-    function printMovieOptions() {
+    function printMovieOptions($conn) {
         $sql = "SELECT Movies.id AS id, Movies.name AS name FROM Movies";
         $result1 = $conn->query($sql);
         while ($row = $result1->fetch_assoc()) {
@@ -26,15 +26,16 @@
         <title>start</title>
     </head>
     <body>
+        <a href="index.php">wróć na stronę główną</a><br>
         <form method="POST">
             <select name="cinema">
                 <?PHP
-                    printCinemaOptions();
+                    printCinemaOptions($conn);
                 ?>
             </select>
             <select name="movie">
                 <?PHP
-                    printMovieOptions();
+                    printMovieOptions($conn);
                 ?>
             </select>
             <input type="submit">
@@ -42,7 +43,7 @@
         <?PHP
             if (isset($_POST['cinema']) && isset($_POST['movie'])) {
 
-                addSeans($_POST['cinema'], $_POST['movie']);
+                addSeans($conn, $_POST['cinema'], $_POST['movie']);
 
                 $conn->close();
                 $conn = null;

@@ -10,7 +10,7 @@
         <a href="admin_movie.php">Filmy</a><br>
         <a href="admin_payment.php">Płatności</a><br>
         <a href="admin_cinema.php">Kina</a><br>
-        <a href="admin_seans.php">seanse</a><br>
+        <a href="admin_seans.php">Seanse</a><br>
         <hr>
     </body>	
 </html>

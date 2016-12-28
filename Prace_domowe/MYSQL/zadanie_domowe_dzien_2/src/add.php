@@ -35,12 +35,12 @@
         }
     }
 
-    function addSeans($cinema, $movie) {
-        $cinemaId = intval($_POST['cinema']);
-        $movieId = intval($_POST['movie']);
+    function addSeans($conn, $cinema, $movie) {
+        $cinemaId = intval($cinema);
+        $movieId = intval($movie);
         $sql = "INSERT INTO seans (movie_id, cinema_id) VALUES (" . $movieId . "," . $cinemaId . ")";
-        $result2 = $conn->query($sql);
-        if ($result2) {
+        $result = $conn->query($sql);
+        if ($result) {
             print "seans został dodany";
         } else {
             print "seans nie został dodany " . $conn->errno;

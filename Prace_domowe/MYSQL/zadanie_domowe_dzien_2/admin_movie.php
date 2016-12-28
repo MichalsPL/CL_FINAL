@@ -11,16 +11,14 @@
     if (isset($_POST['serachMovies'])) {
         $sql = "SELECT * FROM Movies WHERE name LIKE " . '"%' . $_POST['serachMovies'] . '%"';
         $message = "Widzisz wybrane Filmy (WYBÓR PO TYTULE)";
-        $_POST['type'] = 'Film';
     }
     if (isset($_POST['serachMoviesRaring'])) {
         $sql = "SELECT * FROM Movies WHERE rating = " . $_POST['serachMoviesRaring'];
         $message = "Widzisz wybrane Filmy (WYBÓR PO RATINGU)";
-        $_POST['type'] = 'Film';
     }
     $result = $conn->query($sql);
     if (!$result) {
-        $message = "Wystąpił błąd wróć na stronę główną" . $conn->error;
+        $message = "Wystąpił błąd wróć na stronę główną" . $conn->errno;
     }
 ?>
 <!doctype html>
@@ -30,7 +28,7 @@
         <title>start</title>
     </head>
     <body>
-        <a href="index.php">wróć na stronę główną</a>
+        <a href="index.php">wróć na stronę główną</a><br>
         <form method="POST">        
             <h4> DODAJ FILM</h4>
             <label>Tytuł<input name="name"></label>
@@ -60,8 +58,9 @@
             }
 
             echo $message;
-
-            printMovies($result);
+            if ($result) {
+                printMovies($result);
+            }
         ?>
     </body>	
 </html>

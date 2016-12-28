@@ -29,7 +29,7 @@
         <title>...</title>
     </head>
     <body>
-
+        <a href="index.php">wróć na stronę główną</a>
         <form class="payment_form" method="POST" >
             <?php
                 if (isset($_GET['pay']) && $_GET['pay'] > 0) {

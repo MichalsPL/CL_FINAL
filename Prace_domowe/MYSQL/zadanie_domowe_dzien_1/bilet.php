@@ -37,8 +37,11 @@
             }
 
             echo $message;
-
-            printTickets($result);
+            if ($result) {
+                printTickets($result);
+            }
+            $conn->close();
+            $conn = null;
         ?>
     </body>	
 </html>

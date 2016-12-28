@@ -13,7 +13,7 @@
             $last_id = $conn->insert_id;
             $message = "bilet dodano" . '<a href="pay.php?pay=' . trim($last_id) . '">zaplac za bilet</a>';
         } else {
-            $message = "wystąpił błąd " . $conn->error;
+            $message = "wystąpił błąd " . $conn->errno;
         }
     }
 
@@ -40,7 +40,7 @@
                 }
                 print "</select></label>";
             } else {
-                $message = "wystąpił błąd " . $conn->error;
+                $message = "wystąpił błąd " . $conn->errno;
             }
         }
     }
@@ -52,6 +52,7 @@
         <title>start</title>
     </head>
     <body>
+        <a href="index.php">wróć na stronę główną</a><br>
         <form method="POST">
             <label>podaj ilość biletów
                 <input type="number" name="quantity"></label><br>

@@ -26,7 +26,7 @@
         if ($result) {
             Print $type . " o ID " . $id . " jest usuniete";
         } else {
-            print"WYSTĄPIŁ BŁĄD" . $conn->error;
+            print"WYSTĄPIŁ BŁĄD" . $conn->errno;
         }
     }
     

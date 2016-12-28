@@ -1,6 +1,5 @@
 <?php
     include_once 'src/connect.php';
-    include_once 'src/print.php';
     $conn = connect();
 
     function showAll($conn) {
@@ -16,7 +15,7 @@
         } elseif ($result->num_rows == 0) {
             print "brak kin w bazie<br>";
         } else {
-            print "Wystąpił błąd" . $conn->error;
+            print "Wystąpił błąd " . $conn->errno;
         }
     }
 ?>
@@ -27,6 +26,7 @@
         <title>...</title>
     </head>
     <body>
+        <a href="index.php">wróć na stronę główną</a><br>
         <?php
             showAll($conn);
 

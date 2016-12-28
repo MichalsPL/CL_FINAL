@@ -9,12 +9,13 @@
     $message = "Widzisz wszystkie kina";
 
     if (isset($_POST['serachCinemas'])) {
-        $sql = "SELECT * FROM Cinemas WHERE name LIKE " . '"%' . $_POST['serachCinemas'] . '%"';
+        $safeSarchCinemas = $conn->real_escape_string($_POST['serachCinemas']);
+        $sql = "SELECT * FROM Cinemas WHERE name LIKE " . '"%' . $safeSarchCinemas . '%"';
         $message = "Widzisz wybrane kina";
     }
     $result = $conn->query($sql);
     if (!$result) {
-        $message = "Wystąpił błąd wróć na stronę główną" . $conn->error;
+        $message = "Wystąpił błąd wróć na stronę główną" . $conn->errno;
     }
 ?>
 <!doctype html>
@@ -47,8 +48,11 @@
             }
 
             echo $message;
-
-            printCinemas($result);
+            if ($result) {
+                printCinemas($result);
+            }
+            $conn->close();
+            $conn = null;
         ?>
     </body>	
 </html>

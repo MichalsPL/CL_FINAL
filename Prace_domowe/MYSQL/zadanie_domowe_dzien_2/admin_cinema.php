@@ -14,7 +14,7 @@
     }
     $result = $conn->query($sql);
     if (!$result) {
-        $message = "Wystąpił błąd wróć na stronę główną" . $conn->error;
+        $message = "Wystąpił błąd wróć na stronę główną" . $conn->errno;
     }
 ?>
 <!doctype html>
@@ -24,7 +24,7 @@
         <title>start</title>
     </head>
     <body>
-        <a href="index.php">wróć na stronę główną</a>
+        <a href="index.php">wróć na stronę główną</a><br>
         <form method="POST">       
             <h4> DODAJ KINO</h4>
             <label>Nazwa<input name="name"></label>
@@ -50,8 +50,9 @@
             $conn = null;
 
             echo $message;
-
-            printCinemas($result);
+            if ($result) {
+                printCinemas($result);
+            }
         ?>
     </body>	
 </html>

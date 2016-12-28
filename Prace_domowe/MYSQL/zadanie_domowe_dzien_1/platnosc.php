@@ -9,14 +9,20 @@
     $message = "Widzisz wszystkie Płatności";
 
     if (isset($_POST['PaymentDate']) && $_POST['PaymentDate'] != '') {
+        $safePaymentDate = $conn->real_escape_string($_POST['PaymentDate']);
         $message = "Widzisz wybrane płatności";
-        $sql = "SELECT * FROM Payments WHERE payment_date = '" . $_POST['PaymentDate'] . "'";
+        $sql = "SELECT * FROM Payments WHERE payment_date between '" . $safePaymentDate
+                . "' and '" . $safePaymentDate . " 23:59:59'";
+        
     } elseif (isset($_POST['PaymentAfter']) && $_POST['PaymentAfter'] != '') {
+        $safePaymentAfter = $conn->real_escape_string($_POST['PaymentAfter']);
         $message = "Widzisz wybrane płatności";
         $sql = "SELECT * FROM Payments WHERE payment_date > '" . $_POST['PaymentAfter'] . "'";
+        
     } elseif (isset($_POST['PaymentBefore']) && $_POST['PaymentBefore'] != '') {
+        $safePaymentBefore = $conn->real_escape_string($_POST['PaymentBefore']);
         $message = "Widzisz wybrane płatności";
-        $sql = "SELECT * FROM Payments WHERE payment_date < '" . $_POST['PaymentBefore'] . "'";
+        $sql = "SELECT * FROM Payments WHERE payment_date < '" . $safePaymentBefore . "'";
     }
 
     $result = $conn->query($sql);
@@ -72,7 +78,11 @@
             }
 
             echo $message;
-            printPayment($result);
+            if ($result) {
+                printPayment($result);
+            }
+            $conn->close();
+            $conn=null;
         ?>
     </body>	
 </html>

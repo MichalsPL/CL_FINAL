@@ -7,7 +7,7 @@
         if ($result) {
             print "dodano kino o nazwie " . $recieved['name'] . " i adresie" . $recieved['adress'] . " ";
         } else {
-            print "Wystąpił błąd " . $conn->error;
+            print "Wystąpił błąd " . $conn->errno;
         }
     }
 
@@ -18,7 +18,7 @@
         if ($result) {
             print "dodano Film o tytule " . $recieved['name'] . " i opisie <br>" . $recieved['description'] . " ";
         } else {
-            print "Wystąpił błąd " . $conn->error;
+            print "Wystąpił błąd " . $conn->errno;
         }
     }
 
@@ -30,7 +30,7 @@
             print "dodano Bilet o Cenie " . $recieved['price'] .
                     " i w ilości " . $recieved['quantity'] . " sztuk";
         } else {
-            print "Wystąpił błąd " . $conn->error;
+            print "Wystąpił błąd " . $conn->errno;
         }
     }
 
@@ -43,7 +43,7 @@
             print "dodano płatność o typie " . $recieved['payment_type'] .
                     " i ID biletu " . $recieved['ticket_ID'] . " sztuk";
         } else {
-            print "Wystąpił błąd " . $conn->error;
+            print "Wystąpił błąd " . $conn->errno;
         }
     }
     
